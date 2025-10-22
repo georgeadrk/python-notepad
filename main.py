@@ -12,6 +12,24 @@ class SimpleNotepad:
         self.text_area: Text = Text(self.root, wrap='word')
         self.text_area.pack(expand=True, fill='both')
 
+        # Frame
+        self.button_frame: Frame = Frame(self.root)
+        self.button_frame.pack()
+
+        # Save button
+        self.save_button: Button = Button(self.button_frame, text='Save', command=self.save_file)
+        self.save_button.pack(side=tk.LEFT)
+
+        # Load button
+        self.load_button: Button = Button(self.button_frame, text='Load', command=self.load_file)
+        self.load_button.pack(side=tk.RIGHT)
+
+    def save_file(self) -> None:
+        pass
+
+    def load_file(self) -> None:
+        pass
+
     def run(self) -> None:
         self.root.mainloop()
 
