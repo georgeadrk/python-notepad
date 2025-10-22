@@ -25,10 +25,26 @@ class SimpleNotepad:
         self.load_button.pack(side=tk.RIGHT)
 
     def save_file(self) -> None:
-        pass
+        file_path: str = filedialog.asksaveasfilename(defaultextension='.txt',
+                                                      filetypes=[('Text files', '*.txt')])
+
+        with open(file_path, 'w') as file:
+            file.write(self.text_area.get(1.0, tk.END))
+
+        print(f'File saved to: {file_path}')
 
     def load_file(self) -> None:
-        pass
+        file_path: str = filedialog.askopenfilename(defaultextension='.txt',
+                                                      filetypes=[('Text files', '*.txt')])
+
+        with open(file_path, 'r') as file:
+            content: str = file.read()
+            self.text_area.delete(1.0, tk.END)
+            self.text_area.insert(tk.INSERT, content)
+
+        print(f'File loaded from: {file_path}')
+
+        print(f'File saved to: {file_path}')
 
     def run(self) -> None:
         self.root.mainloop()
